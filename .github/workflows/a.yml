@@ -1,0 +1,23 @@
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+
+  build_windows:
+    strategy:
+      matrix:
+        arch: [x86, x64]
+      fail-fast: false
+
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/ar1ip2@build
+        with:
+          branch: custom
+
+          token: ${{ secrets.token }}
+          arch: ${{ matrix.arch }}
