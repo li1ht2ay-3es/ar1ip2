@@ -1,0 +1,75 @@
+description: windows mingw compiler
+
+
+inputs:
+  token:
+    description: github token
+    required: false
+    default: ''
+
+  arch:
+    description: system platform
+    required: false
+    default: x64
+
+
+runs:
+  using: composite
+
+  steps:
+    - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
+      with:
+        token: ${{ inputs.token }}
+        branch: upstream
+        auto: true
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
+      with:
+        arch: ${{ inputs.arch }}
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@cache-read
+      with:
+        name: cache-${{ inputs.arch }}
+
+
+
+    - shell: bash
+      run: |
+        merge () {
+          echo "<<< ===  merging  $1  === >>>"
+          git merge origin/$1
+          echo ""
+        }
+
+        merge gameboy-prof9
+
+
+
+    - shell: bash
+      env:
+        CC: ${{ env.MINGW_CC }}
+        CXX: ${{ env.MINGW_CXX }}
+      run: |
+        cmake -B ${{ github.workspace }}/build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DARMIPS_USE_STD_FILESYSTEM=ON
+        cmake --build ${{ github.workspace }}/build --config Release
+
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@cache-write
+      with:
+        name: cache-${{ inputs.arch }}
+
+
+    - shell: bash
+      run: |
+        ls -a -R
+
+
+    - uses: actions/upload-artifact@main
+      with:
+        name: armips_${{ inputs.arch }}
+        path: |
+          build
+          !build\CMakeFiles
