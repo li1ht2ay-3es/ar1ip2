@@ -1,15 +1,25 @@
 on:
+  # push:
   workflow_dispatch:
-  schedule:
-    - cron: '0 5 * * *'
+    inputs:
+      branch:
+        required: true
+      title:
 
 
 jobs:
 
-  cron:
+  amend-branch:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: li1ht2ay-3es/ar1ip2@cron
+      - uses: li1ht2ay-3es/gi1-ac2io3s@amend-branch
         with:
+          title: ${{ inputs.title }}
+          branch: ${{ inputs.branch }}
+
+          author: ${{ github.actor }}
+          email: ${{ github.actor }}@users.noreply.github.com
+
+          auto: true
           token: ${{ secrets.token }}
