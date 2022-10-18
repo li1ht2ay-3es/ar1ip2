@@ -5,7 +5,7 @@
 #include <clocale>
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 namespace
@@ -22,7 +22,7 @@ namespace
 	}
 }
 
-#ifdef _WIN32
+#if defined(_WIN32) && 0
 int wmain(int argc, wchar_t* argv[])
 {
 	std::setlocale(LC_CTYPE, "");

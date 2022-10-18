@@ -1,0 +1,21 @@
+on:
+  # push:
+  workflow_dispatch:
+    inputs:
+      branch:
+      depth:
+
+
+jobs:
+
+  squash-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/gi1-ac2io3s@squash-branch
+        with:
+          depth: ${{ inputs.depth }}
+
+          auto: true
+          token: ${{ secrets.token }}
+          branch: ${{ inputs.branch }}

@@ -2,7 +2,11 @@
 
 #include "Archs/ARM/Arm.h"
 #include "Archs/MIPS/Mips.h"
+<<<<<<< HEAD
 #include "Archs/SuperH/SuperH.h"
+=======
+#include "Archs/Z80/Z80.h"
+>>>>>>> cfe1872 (Prof9 Z80 Gameboy extension)
 #include "Commands/CAssemblerLabel.h"
 #include "Commands/CDirectiveArea.h"
 #include "Commands/CDirectiveConditional.h"
@@ -453,6 +457,7 @@ std::unique_ptr<CAssemblerCommand> parseDirectiveArmArch(Parser& parser, int fla
 	return nullptr;
 }
 
+<<<<<<< HEAD
 std::unique_ptr<CAssemblerCommand> parseDirectiveShArch(Parser& parser, int flags)
 {
 	Architecture::setCurrent(SuperH);
@@ -462,6 +467,23 @@ std::unique_ptr<CAssemblerCommand> parseDirectiveShArch(Parser& parser, int flag
 	case DIRECTIVE_SH_SATURN:
 		SuperH.setVersion(SHARCH_SATURN);
 		return std::make_unique<ArchitectureCommand>(".saturn", "");
+=======
+std::unique_ptr<CAssemblerCommand> parseDirectiveZ80Arch(Parser& parser, int flags)
+{
+	Architecture::setCurrent(Z80);
+
+	switch (flags)
+	{
+	case DIRECTIVE_Z80_Z80:
+		Z80.SetVersion(Z80ArchType::MARCH_Z80);
+		return std::make_unique<ArchitectureCommand>(".z80", "");
+	case DIRECTIVE_Z80_GB:
+		Z80.SetVersion(Z80ArchType::MARCH_Gameboy);
+		return std::make_unique<ArchitectureCommand>(".gb", "");
+	case DIRECTIVE_Z80_EREADER:
+		Z80.SetVersion(Z80ArchType::MARCH_Ereader);
+		return std::make_unique<ArchitectureCommand>(".ereader", "");
+>>>>>>> cfe1872 (Prof9 Z80 Gameboy extension)
 	}
 
 	return nullptr;
@@ -800,8 +822,14 @@ const DirectiveMap directives = {
 	{ ".arm.big",         { &parseDirectiveArmArch,         DIRECTIVE_ARM_BIG } },
 	{ ".arm.little",      { &parseDirectiveArmArch,         DIRECTIVE_ARM_LITTLE } },
 
+<<<<<<< HEAD
 	{ ".saturn",          { &parseDirectiveShArch,          DIRECTIVE_SH_SATURN } },
 	{ ".32x",             { &parseDirectiveShArch,          DIRECTIVE_SH_SATURN } },
+=======
+	{ ".z80",             { &parseDirectiveZ80Arch,	        DIRECTIVE_Z80_Z80 } },
+	{ ".gb",              { &parseDirectiveZ80Arch,         DIRECTIVE_Z80_GB } },
+	{ ".ereader",         { &parseDirectiveZ80Arch,         DIRECTIVE_Z80_EREADER } },
+>>>>>>> cfe1872 (Prof9 Z80 Gameboy extension)
 
 	{ ".area",            { &parseDirectiveArea,            0 } },
 	{ ".autoregion",      { &parseDirectiveAutoRegion,      0 } },

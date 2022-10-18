@@ -138,6 +138,15 @@ armips_target_sources(armips PRIVATE
 	Archs/SuperH/ShExpressionFunctions.cpp
 	Archs/SuperH/ShExpressionFunctions.h
 	
+	Archs/Z80/CZ80Instruction.h
+	Archs/Z80/CZ80Instruction.cpp
+	Archs/Z80/Z80.cpp
+	Archs/Z80/Z80.h
+	Archs/Z80/Z80Opcodes.cpp
+	Archs/Z80/Z80Opcodes.h
+	Archs/Z80/Z80Parser.cpp
+	Archs/Z80/Z80Parser.h
+	
 	Commands/CAssemblerCommand.cpp
 	Commands/CAssemblerCommand.h
 	Commands/CAssemblerLabel.cpp
@@ -233,7 +242,12 @@ if(NOT ARMIPS_LIBRARY_ONLY)
 	add_executable(armips-bin "")
 	init_target(armips-bin)
 	set_target_properties(armips-bin PROPERTIES OUTPUT_NAME armips)
-	target_link_libraries(armips-bin PRIVATE armips)
+
+        if (GCC)
+		target_link_libraries(armips-bin PRIVATE armips -static-libgcc -static-libstdc++)
+	else()
+		target_link_libraries(armips-bin PRIVATE armips)
+	endif()
 
 	armips_target_sources(armips-bin PRIVATE
 		Main/CommandLineInterface.cpp
