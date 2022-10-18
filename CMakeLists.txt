@@ -138,6 +138,15 @@ armips_target_sources(armips PRIVATE
 	Archs/SuperH/ShExpressionFunctions.cpp
 	Archs/SuperH/ShExpressionFunctions.h
 	
+	Archs/Z80/CZ80Instruction.h
+	Archs/Z80/CZ80Instruction.cpp
+	Archs/Z80/Z80.cpp
+	Archs/Z80/Z80.h
+	Archs/Z80/Z80Opcodes.cpp
+	Archs/Z80/Z80Opcodes.h
+	Archs/Z80/Z80Parser.cpp
+	Archs/Z80/Z80Parser.h
+	
 	Commands/CAssemblerCommand.cpp
 	Commands/CAssemblerCommand.h
 	Commands/CAssemblerLabel.cpp

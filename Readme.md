@@ -117,6 +117,7 @@ The assembler includes full support for the MIPS R3000, MIPS R4000, Allegrex and
 * optional automatic fix for said problems by inserting a nop between the instructions
 * output of the assembled code to a text file, with memory addresses and origin (see [1.1 Usage](#11-usage))
 * a directive to ensure that data is not bigger than a user defined size (see [4.8 Areas](#48-areas))
+* The full Z80 and LR35902 instruction sets, as well as Nintendo e-Reader instructions.
 
 # 4. Features
 
@@ -479,8 +480,14 @@ These directives can be used to set the architecture that the following assembly
 | `.3ds` | Nintendo 3DS | ARM11 | Defaults to ARM mode, incomplete |
 | `.arm.big` | - | ARM | Output in big endian |
 | `.arm.little` | - | ARM | Output in little endian |
+<<<<<<< HEAD
 | `.saturn` | SEGA Saturn | SuperH | - |
 | `.32x` | SEGA 32x | SuperH | Alias to `.saturn` |
+=======
+| `.gb` | Game Boy (Color) | LR35902 | - |
+| `.ereader` | Nintendo e-Reader | e-Reader Z80 | - |
+| `.z80` | - | Z80 | - |
+>>>>>>> cfe1872 (Prof9 Z80 Gameboy extension)
 
 | Architecture | Word size (in bits) |
 | ------------ |:---------------------|
