@@ -71,5 +71,4 @@ runs:
       with:
         name: armips_${{ inputs.arch }}
         path: |
-          build
-          !build\CMakeFiles
+          build\armips.exe
