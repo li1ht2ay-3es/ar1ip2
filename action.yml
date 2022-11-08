@@ -71,4 +71,4 @@ runs:
       with:
         name: armips_${{ inputs.arch }}
         path: |
-          build\armips.exe
+          build/armips.exe
