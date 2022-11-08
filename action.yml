@@ -34,3 +34,4 @@ runs:
 
         auto: true
         token: ${{ inputs.token }}
+      if: github.event.schedule=='* * 1 * *'
