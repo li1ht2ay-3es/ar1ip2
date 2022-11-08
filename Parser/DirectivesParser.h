@@ -69,14 +69,12 @@ using DirectiveMap = std::unordered_multimap<std::string, const DirectiveEntry>;
 #define DIRECTIVE_ARM_BIG			0x00000004
 #define DIRECTIVE_ARM_LITTLE		0x00000005
 
-<<<<<<< HEAD
 #define DIRECTIVE_SH_SATURN			0x00000001
-=======
+
 // Z80 directive flags
 #define DIRECTIVE_Z80_Z80			0x00000001
 #define DIRECTIVE_Z80_GB			0x00000002
 #define DIRECTIVE_Z80_EREADER		0x00000003
->>>>>>> cfe1872 (Prof9 Z80 Gameboy extension)
 
 // Area directive flags
 #define DIRECTIVE_AREA_SHARED		0x00000001
