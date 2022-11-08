@@ -19,8 +19,9 @@ runs:
   steps:
     - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
       with:
-        token: ${{ inputs.token }}
         branch: upstream
+
+        token: ${{ inputs.token }}
         auto: true
 
 
