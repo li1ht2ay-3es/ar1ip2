@@ -242,7 +242,7 @@ if(NOT ARMIPS_LIBRARY_ONLY)
 	add_executable(armips-bin "")
 	init_target(armips-bin)
 	set_target_properties(armips-bin PROPERTIES OUTPUT_NAME armips)
-	target_link_libraries(armips-bin PRIVATE armips)
+	target_link_libraries(armips-bin PRIVATE armips -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic)
 
 	armips_target_sources(armips-bin PRIVATE
 		Main/CommandLineInterface.cpp
